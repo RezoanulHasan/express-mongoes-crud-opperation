@@ -204,3 +204,77 @@ export const deleteUser = async (
     });
   }
 };
+export const addOrder = async (req: Request, res: Response): Promise<void> => {
+  const { userId } = req.params;
+  try {
+    const user = await UserModel.findOne({ userId });
+    if (!user) {
+      res.status(404).json({
+        success: false,
+        message: 'User not found',
+        error: {
+          code: 404,
+          description: 'User not found!',
+        },
+      });
+    } else {
+      if (!user.orders) {
+        user.orders = [];
+      }
+      const { productName, price, quantity } = orderValidationSchema.parse(
+        req.body,
+      );
+      const newOrder = { productName, price, quantity };
+      user.orders.push(newOrder);
+      await user.save();
+      res.status(200).json({
+        success: true,
+        message: 'Order created successfully!',
+        data: null,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Internal Server Error',
+      error: {
+        code: 500,
+        description: 'Failed to create order',
+      },
+    });
+  }
+};
+
+export const getOrders = async (req: Request, res: Response): Promise<void> => {
+  const { userId } = req.params;
+  try {
+    const user = await UserModel.findOne({ userId }, 'orders');
+    if (!user) {
+      res.status(404).json({
+        success: false,
+        message: 'User not found',
+        error: {
+          code: 404,
+          description: 'User not found!',
+        },
+      });
+    } else {
+      res.status(200).json({
+        success: true,
+        message: 'Orders fetched successfully!',
+        data: {
+          orders: user.orders || [],
+        },
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Internal Server Error',
+      error: {
+        code: 500,
+        description: 'Failed to fetch orders',
+      },
+    });
+  }
+};
