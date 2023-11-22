@@ -78,6 +78,7 @@ export const getAllUsers = async (
     });
   }
 };
+
 export const getUserById = async (
   req: Request,
   res: Response,
@@ -204,6 +205,7 @@ export const deleteUser = async (
     });
   }
 };
+
 export const addOrder = async (req: Request, res: Response): Promise<void> => {
   const { userId } = req.params;
   try {
@@ -274,6 +276,47 @@ export const getOrders = async (req: Request, res: Response): Promise<void> => {
       error: {
         code: 500,
         description: 'Failed to fetch orders',
+      },
+    });
+  }
+};
+
+export const calculateTotalPrice = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
+  const { userId } = req.params;
+  try {
+    const user = await UserModel.findOne({ userId }, 'orders');
+    if (!user) {
+      res.status(404).json({
+        success: false,
+        message: 'User not found',
+        error: {
+          code: 404,
+          description: 'User not found!',
+        },
+      });
+    } else {
+      const totalPrice = user.orders?.reduce(
+        (acc, order) => acc + order.price * order.quantity,
+        0,
+      );
+      res.status(200).json({
+        success: true,
+        message: 'Total price calculated successfully!',
+        data: {
+          totalPrice,
+        },
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Internal Server Error',
+      error: {
+        code: 500,
+        description: 'Failed to calculate total price',
       },
     });
   }
