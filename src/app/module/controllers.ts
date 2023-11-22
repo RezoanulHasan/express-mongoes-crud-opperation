@@ -45,3 +45,36 @@ export const createUser = async (
     });
   }
 };
+
+export const getAllUsers = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
+  try {
+    const users = await UserModel.find(
+      {},
+      'username fullName age email address -_id',
+    );
+    const responseUsers = users.map((user) => ({
+      username: user.username,
+      fullName: user.fullName,
+      age: user.age,
+      email: user.email,
+      address: user.address,
+    }));
+    res.status(200).json({
+      success: true,
+      message: 'Users fetched successfully!',
+      data: responseUsers,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Internal Server Error',
+      error: {
+        code: 500,
+        description: 'Failed to fetch users',
+      },
+    });
+  }
+};
