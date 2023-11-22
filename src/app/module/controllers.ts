@@ -12,7 +12,7 @@ export const createUser = async (
       const validatedData = userValidationSchema.parse(req.body);
       const newUser = new UserModel(validatedData);
       const savedUser = await newUser.save();
-      // Avoid exposing sensitive information like passwords in the response
+
       const responseUser: User = {
         ...savedUser.toObject(),
         password: '********',
