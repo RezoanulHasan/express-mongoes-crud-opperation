@@ -84,3 +84,4 @@ userSchema.pre<User>('save', async function (next) {
 });
 
 export const UserModel = model<User>('User', userSchema);
+export const OrderModel = model<Order>('Order', orderSchema);
