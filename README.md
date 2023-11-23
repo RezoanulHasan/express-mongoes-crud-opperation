@@ -1,17 +1,17 @@
-# express-mongooes-crud-opperation
+# express-mongooes-crud-typescript-opperation
 
-## project :  Data Base Design
-## live link :  https://users-orders-5pkxf906n-rezoanulhasan.vercel.app/
+## project:  Data Base Design
+## live link:  https://users-orders-5pkxf906n-rezoanulhasan.vercel.app/
 
 
 
-## Tecnology use 
+## Technology use 
 - Node js
 - Express js
-- Mongooes
+- Mongoose
 - typescript
-- bcrypt (valadiation)
-- zod (valadiation)
+- bcrypt (validation)
+- Zod (validation)
 - eslint ( code formatting and quality checking )
 - prettier (maintain code structure)
 
@@ -73,7 +73,7 @@
 
 ## Getting Started
  to set up and run your project locally
- - colen this repository  
+ - Colen this repository  
  - npm install
  -  npm run  build
  -  npm run start:dev
