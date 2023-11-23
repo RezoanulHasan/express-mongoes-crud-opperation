@@ -64,7 +64,7 @@
 - **HTTP Method:** GET
 - **Controller Method:** `UserController.getOrders`
 
-### Calculate Total Price of Orders for User
+### Calculate the Total Price of Orders for User
 - **Endpoint:** `/api/users/:userId/orders/total-price`
 - **HTTP Method:** GET
 - **Controller Method:** `UserController.calculateTotalPrice`
@@ -72,10 +72,10 @@
 
 
 ## Getting Started
- to set up and run your project locally
+ to set up and run  project locally
  - Colen this repository  
  - npm install
  -  npm run  build
- -  npm run start:dev
+ -  npm run start: dev
 
 
