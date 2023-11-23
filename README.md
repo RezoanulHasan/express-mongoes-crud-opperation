@@ -1,4 +1,4 @@
-# express-mongooes-crud-typescript-opperation
+# express-mongooes-typescript-CRUD-opperation
 
 ## project:  Data Base Design
 ## live link:  https://users-orders-5pkxf906n-rezoanulhasan.vercel.app/
@@ -72,7 +72,7 @@
 
 
 ## Getting Started
- to set up and run  project locally
+ to set up and run  projects locally
  - Colen this repository  
  - npm install
  -  npm run  build
