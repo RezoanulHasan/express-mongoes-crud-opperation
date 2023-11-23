@@ -11,7 +11,7 @@ app.use(cors());
 app.use('/', userRoutes);
 
 app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'Hello, world!' });
+  res.json({ message: 'sever is running' });
 });
 
 export default app;

@@ -302,11 +302,16 @@ export const calculateTotalPrice = async (
         (acc, order) => acc + order.price * order.quantity,
         0,
       );
+
+      // Check if totalPrice is not undefined before formatting
+      const formattedTotalPrice =
+        typeof totalPrice === 'number' ? totalPrice.toFixed(2) : 'N/A';
+
       res.status(200).json({
         success: true,
         message: 'Total price calculated successfully!',
         data: {
-          totalPrice,
+          totalPrice: formattedTotalPrice,
         },
       });
     }
