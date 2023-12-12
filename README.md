@@ -1,7 +1,7 @@
 # express-mongooes-typescript-CRUD-opperation
 
 ## project:  Data Base Design
-## live link:  https://users-orders-5pkxf906n-rezoanulhasan.vercel.app/
+## live link: https://users-orders.vercel.app/
 
 
 
